@@ -1,12 +1,12 @@
 
 function my_lin_interp(grid,vals)
     function func(x::Real)
-        if x < grid[1] || x > grid[end]
-            y = "Error!"
+        if x < grid[1]
+            y = ((vals[2]-vals[1])/(grid[2]-grid[1]))*(x-grid[1])+vals[1]
             return y
         end
-        if x == grid[end]
-            y = vals[end]
+        if x >= grid[end]
+            y = ((vals[end]-vals[end-1])/(grid[end]-grid[end-1]))*(x-grid[end-1])+vals[end-1]
             return y
         end
         if grid[1] <= x < grid[end]
